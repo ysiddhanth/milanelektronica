@@ -41,5 +41,5 @@ void loop(){
 }
 
 double calc_freq(double dist, int str_ind){
-	return freq[str_ind]*pow(2,dist/60.);
+	return freq[str_ind]*pow(2,dist/600.);
 }
