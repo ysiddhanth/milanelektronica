@@ -31,7 +31,7 @@ void loop(){
 	count_ = 0;
 	for(int i=0;i<3;i++){
 		if(currPress[i]) count_++;
-		if(prevPress[i]==currPress[i] && currPress[i]){
+		if(prevPress[i]!=currPress[i] && currPress[i]){
 			tone1.play((int) calc_freq(distance, i));
 			break;
 		} 
