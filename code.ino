@@ -27,9 +27,9 @@ void setup(){
 void loop(){
 	int distance = sensor.readRangeContinuousMillimeters();
 	for(int i=0;i<3;i++) currPress[i] = digitalRead(str[i]);
+	tone1.stop();
 	for(int i=0;i<3;i++){
 		if(prevPress[i]==currPress[i] && currPress[i]){
-			tone1.stop();
 			tone1.play((int) calc_freq(distance, i));
 			break;
 		} 
