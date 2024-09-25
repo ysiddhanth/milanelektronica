@@ -10,6 +10,7 @@ int str[] = {2,3,4};
 int prevPress{0,0,0};
 int currPress{0,0,0};
 int buzz = 8;
+int count_ = 0;
 
 void setup(){
 	Serial.begin(9600);
@@ -27,13 +28,15 @@ void setup(){
 void loop(){
 	int distance = sensor.readRangeContinuousMillimeters();
 	for(int i=0;i<3;i++) currPress[i] = digitalRead(str[i]);
-	tone1.stop();
+	count_ = 0;
 	for(int i=0;i<3;i++){
+		if(currPress[i]) count_++;
 		if(prevPress[i]==currPress[i] && currPress[i]){
 			tone1.play((int) calc_freq(distance, i));
 			break;
 		} 
 	}
+	if(!count_) tone1.stop();
 	for(int i=0;i<3;i++) prevPress[i] = currPress[i];
 }
 
